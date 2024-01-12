@@ -25,11 +25,13 @@ program main
     implicit none
 
     ! Variables
-    integer :: i, local_size, size, maxVal, num_procs, myid, num_primes, ierr
+    integer :: i, local_size, size, maxVal, num_procs, myid, ierr
     integer, dimension(:), allocatable :: recvcounts, displs
     integer(int64), allocatable :: random_numbers(:)
     integer(int64), dimension(:), allocatable :: primes, local_numbers, all_primes, temp
     logical :: flag
+
+    integer :: num_primes = 1
 
     ! Initialize MPI
     call MPI_Init(ierr)
@@ -62,8 +64,7 @@ program main
                      local_numbers, local_size, MPI_INT64_T, 0, MPI_COMM_WORLD, ierr)
 
     ! Find primes on each node
-    num_primes = 1
-    Print *, "Node ", myid, "has count ", num_primes ! If I take this out, program crashes
+    num_primes = 1 ! Setting this here causes programm to crash
     call find_primes(myid, local_numbers, primes, num_primes)
    
     ! Resize the local_primes array to contain only the primes
