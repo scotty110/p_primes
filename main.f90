@@ -64,7 +64,7 @@ program main
                      local_numbers, local_size, MPI_INT64_T, 0, MPI_COMM_WORLD, ierr)
 
     ! Find primes on each node
-    num_primes = 1 ! Setting this here causes programm to crash
+    !num_primes = 1 ! Setting this here causes programm to crash
     call find_primes(myid, local_numbers, primes, num_primes)
    
     ! Resize the local_primes array to contain only the primes
