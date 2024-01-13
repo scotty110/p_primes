@@ -41,7 +41,7 @@ program main
     allocate(recvcounts(num_procs), displs(num_procs))
 
     ! Initialize random numbers
-    size = 100
+    size = 100000
     if (myid == 0) then
         ! Variables w/ values
         maxVal = 100000000
